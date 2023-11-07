@@ -1,7 +1,9 @@
 /* eslint-disable linebreak-style */
 const Sequelize = require('sequelize');
 const Users = require('../apps/models/Users');
-const models = [Users];
+const Posts = require('../apps/models/Posts');
+
+const models = [Users, Posts];
 const databaseConfig = require('../configs/db');
 
 class Database {

@@ -91,6 +91,9 @@ class PostsController{
 
     async listMyPosts(req, res){
         const allPosts = await Posts.findAll({
+            order:[
+            ['id', 'DESC'],
+        ],
            where: { author_id: req.userId,
         },
         });
@@ -116,6 +119,9 @@ class PostsController{
 
     async listAllPosts(req, res){
         const allPosts = await Posts.findAll({
+            order:[
+                ['id', 'DESC'],
+            ],
             attributes: ['id', 'image', 'description', 'number_likes'],
             include:[{
                 model: Users, as: 'user', required: true,

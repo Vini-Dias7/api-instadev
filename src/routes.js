@@ -25,24 +25,18 @@ routes.post("/auth", schemaValidator(authSchema), AuthenticationController.authe
 routes.use(AuthenticationMiddleware);
 
 routes.put("/user", UserController.update);
-
 routes.delete("/user", UserController.delete);
-
-routes.get("/user-profile", UserController.userProfile);
+routes.get("/user", UserController.userProfile);
 
 routes.post("/upload", upload.single("image"), FileController.upload);
 
-routes.post("/post", schemaValidator(PostsSchema), PostsController.create);
+routes.post("/posts", schemaValidator(PostsSchema), PostsController.create);
+routes.delete("/posts/:id", PostsController.delete);
+routes.put("/posts/:id", PostsController.update);
+routes.get("/posts", PostsController.listAllPosts);
+routes.put("/posts/add-like/:id", PostsController.addLike);
+routes.get("/posts/my-posts", PostsController.listMyPosts);
 
-routes.delete("/post/:id", PostsController.delete);
-
-routes.put("/post/:id", PostsController.update);
-
-routes.put("/add-like/:id", PostsController.addLike);
-
-routes.get("/list-my-posts", PostsController.listMyPosts);
-
-routes.get("/list-all-posts", PostsController.listAllPosts);
 
 routes.get("/health", (req, res) =>
   res.send({

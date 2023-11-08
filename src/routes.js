@@ -38,6 +38,12 @@ routes.delete("/post/:id", PostsController.delete);
 
 routes.put("/post/:id", PostsController.update);
 
+routes.put("/add-like/:id", PostsController.addLike);
+
+routes.get("/list-my-posts", PostsController.listMyPosts);
+
+routes.get("/list-all-posts", PostsController.listAllPosts);
+
 routes.get("/health", (req, res) =>
   res.send({
     message: "Connected with success in port 3000",
